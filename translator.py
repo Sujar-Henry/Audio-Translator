@@ -1,3 +1,45 @@
+#=================================AUDIO INPUT FROM MIC=================================
+import pyaudio
+import wave
+
+
+CHUNK = 1024
+FORMAT = pyaudio.paInt16
+CHANNELS = 1
+RATE = 16000
+
+p = pyaudio.PyAudio()
+
+stream = p.open(
+    format = FORMAT,
+    channels = CHANNELS,
+    rate = RATE,
+    input = True,
+    frames_per_buffer = CHUNK)
+
+print("start recording")
+
+frames = []
+seconds = 10
+for i in range(0,int(RATE/CHUNK * seconds)):
+    data = stream.read(CHUNK)
+    frames.append(data)
+
+print("recording stopped")
+
+stream.stop_stream()
+stream.close()
+p.terminate
+
+
+wf = wave.open("output.wav","wb")
+wf.setnchannels(CHANNELS)
+wf.setsampwidth(p.get_sample_size(FORMAT))
+wf.setframerate(RATE)
+wf.writeframes(b''.join(frames))
+wf.close
+#==========================AUDIO INPUT FROM MIC========================
+
 #=============IMPORTS TO CONFIRM PYTORCH WORKING=====================================#
 import torch
 import torchaudio
@@ -13,7 +55,7 @@ import IPython
 import matplotlib.pyplot as plt
 from torchaudio.utils import download_asset
 
-SPEECH_FILE = download_asset(r"C:\Users\sking\Desktop\Word_Detection_and_Translator\d176d0f5-251f-43b3-ae38-c805abd4150f-byVC.wav")
+SPEECH_FILE = download_asset(r"C:\Users\sking\Desktop\Word_Detection_and_Translator\output.wav")
 
 
 #======================CREATE PIPELINE
@@ -76,3 +118,4 @@ transcript = decoder(emission[0])
 
 print(transcript)
 IPython.display.Audio(SPEECH_FILE)
+
