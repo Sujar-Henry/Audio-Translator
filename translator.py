@@ -2,6 +2,7 @@
 import torch
 import torchaudio
 from microphone_recording import mic_audio
+from language_change import translate_text
 
 #==========================RECORDING AUDIO FROM MICROPHONE===================================
 mic_audio()
@@ -79,6 +80,15 @@ class GreedyCTCDecoder(torch.nn.Module):
 decoder = GreedyCTCDecoder(labels=bundle.get_labels())
 transcript = decoder(emission[0])
 
-print(transcript)
+#print(transcript)
 IPython.display.Audio(SPEECH_FILE)
+
+transcript = transcript.capitalize()
+transcript = transcript.replace("|"," ")
+
+print(transcript)
+
+#==========TRANSLATE TEXT========================
+
+translate_text(transcript)
 
