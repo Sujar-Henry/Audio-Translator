@@ -1,8 +1,8 @@
-from googletrans import Translator
+from libretranslatepy import LibreTranslateAPI
 
-def translate_text(text):
-    translator = Translator()
+def translate_text(text,language):
+    lt = LibreTranslateAPI("https://translate.argosopentech.com/")
 
-    translated_text = translator.translate(text, dest="es")  
-
-    print(translated_text.text)
+    translator = lt.translate(text,"en", language)
+    
+    print(translator)

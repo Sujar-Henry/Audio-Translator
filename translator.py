@@ -1,3 +1,6 @@
+
+language = input("What language would you like to convert to, Spanish = 'es',French = 'fr', Italian = 'it', Russian = 'ru':")
+
 #=============IMPORTS TO CONFIRM PYTORCH WORKING=====================================#
 import torch
 import torchaudio
@@ -90,5 +93,5 @@ print(transcript)
 
 #==========TRANSLATE TEXT========================
 
-translate_text(transcript)
+translate_text(transcript,language)
 
