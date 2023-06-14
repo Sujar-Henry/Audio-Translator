@@ -1,8 +1,10 @@
 from libretranslatepy import LibreTranslateAPI
 
-def translate_text(text,language):
-    lt = LibreTranslateAPI("https://translate.argosopentech.com/")
+lt = LibreTranslateAPI("https://translate.argosopentech.com/")
 
-    translator = lt.translate(text,"en", language)
+def translate_text(text, language):
     
+    translator = lt.translate(text, "en", language)
+
     print(translator)
+    return translator

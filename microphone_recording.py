@@ -3,6 +3,7 @@ import wave
 
 
 def mic_audio():
+    #========================================SETS CHUNK TO 1024,CHANNEL TO 1ST AND RATE TO 16KHZ
     CHUNK = 1024
     FORMAT = pyaudio.paInt16
     CHANNELS = 1

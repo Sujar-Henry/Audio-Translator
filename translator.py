@@ -6,6 +6,7 @@ import torch
 import torchaudio
 from microphone_recording import mic_audio
 from language_change import translate_text
+from text_audio_converter import texttospeech
 
 #==========================RECORDING AUDIO FROM MICROPHONE===================================
 mic_audio()
@@ -95,3 +96,9 @@ print(transcript)
 
 translate_text(transcript,language)
 
+
+#============TEXT TO SPEECH==============================
+translated_text = translate_text(transcript,language)
+
+
+texttospeech(translated_text)
