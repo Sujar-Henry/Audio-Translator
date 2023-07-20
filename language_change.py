@@ -1,5 +1,6 @@
 from libretranslatepy import LibreTranslateAPI
 
+
 lt = LibreTranslateAPI("https://translate.argosopentech.com/")
 
 def translate_text(text, language):
@@ -8,3 +9,4 @@ def translate_text(text, language):
 
     print(translator)
     return translator
+    

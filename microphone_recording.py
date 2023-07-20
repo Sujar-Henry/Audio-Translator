@@ -19,9 +19,12 @@ def mic_audio():
         frames_per_buffer = CHUNK)
 
     print("start recording")
-
+#allow user to choose how long they want to record for
+    def choose_length():
+        seconds = int(input("How many seconds would you like to record for?:"))
+        return seconds
     frames = []
-    seconds = 10
+    seconds = choose_length()
     for i in range(0,int(RATE/CHUNK * seconds)):
         data = stream.read(CHUNK)
         frames.append(data)

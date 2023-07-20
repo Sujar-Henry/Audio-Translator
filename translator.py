@@ -8,6 +8,7 @@ from microphone_recording import mic_audio
 from language_change import translate_text
 from text_audio_converter import texttospeech
 
+
 #==========================RECORDING AUDIO FROM MICROPHONE===================================
 mic_audio()
 #==========================RECORDING AUDIO FROM MICROPHONE==================================
@@ -55,7 +56,6 @@ with torch.inference_mode():
     features, _ = model.extract_features(waveform)
 
 
-
 #===========FEATURE EXTRACTION AND CLASSIFICATION
 with torch.inference_mode():
     emission, _ = model(waveform)
@@ -91,6 +91,7 @@ transcript = transcript.capitalize()
 transcript = transcript.replace("|"," ")
 
 print(transcript)
+
 
 #==========TRANSLATE TEXT========================
 
