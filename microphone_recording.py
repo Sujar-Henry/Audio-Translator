@@ -18,10 +18,11 @@ def mic_audio():
         input = True,
         frames_per_buffer = CHUNK)
 
-    print("start recording")
+    
 #allow user to choose how long they want to record for
     def choose_length():
         seconds = int(input("How many seconds would you like to record for?:"))
+        print("Starting recording...")
         return seconds
     frames = []
     seconds = choose_length()
@@ -43,5 +44,6 @@ def mic_audio():
     wf.setframerate(RATE)
     wf.writeframes(b''.join(frames))
     wf.close
+
 
 #===============CREATE WAV FILE====
